@@ -8,16 +8,16 @@
 
 #import "SkyLeftItemsModel.h"
 @interface SkyLeftItemsModel()
-@property (nonatomic,strong)NSMutableDictionary *dataDictionary;
+@property (nonatomic,strong)NSMutableArray *dataArray;
 @end
 @class SkyNameModel;
 @implementation SkyLeftItemsModel
-- (NSMutableDictionary *)dataDictionary
+- (NSMutableArray *)dataArray
 {
-    if (_dataDictionary == nil) {
-        _dataDictionary = [NSMutableDictionary dictionary];
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
     }
-    return _dataDictionary;
+    return _dataArray;
 }
 +(void)dealDataWithSucess:(SucessBlock)sucessBlock FailureBlock:(FailureBlock)failureBlock
 {
@@ -26,7 +26,7 @@
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[skyLeftItemsModel dictionaryForName] options:0 error:NULL];
     [skyLeftItemsModel dealWithResponseObject:jsonData WithModel:@"SkyNameModel"];
-    sucessBlock(skyLeftItemsModel.dataDictionary);
+    sucessBlock(skyLeftItemsModel.dataArray);
 }
 - (NSDictionary *)dictionaryForName
 {
@@ -55,7 +55,7 @@
     if ([model isEqualToString:@"SkyNameModel"]) {
         [modelArray addObjectsFromArray:[SkyNameModel mj_objectArrayWithKeyValuesArray:arr[@"List"]]];
     }
-    self.dataDictionary[model] = modelArray;
+    self.dataArray = modelArray;
 }
 @end
 @implementation SkyNameModel

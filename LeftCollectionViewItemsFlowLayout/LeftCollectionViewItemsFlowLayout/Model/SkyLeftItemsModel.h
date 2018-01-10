@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Header.h"
-typedef void (^SucessBlock) (NSMutableDictionary *dataDictionary);
+typedef void (^SucessBlock) (NSMutableArray *dataArray);
 typedef void (^FailureBlock) (NSError *error);
 @interface SkyLeftItemsModel : NSObject
 //请求
